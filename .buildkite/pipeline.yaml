@@ -1,0 +1,22 @@
+agents:
+  queue: "docker"
+
+env:
+  TF_INPUT: false    # run terragrunt in non-interactive mode
+
+steps:
+  - command: make plan
+    label: "Planning the :terraform:"
+    if: build.branch != 'main'
+
+  # test applied before global to pick up any terraform or provider version issues
+  - command: make apply-test
+    label: "Applying all the :terraform: to TEST :goggles:"
+    branches: main
+  
+  - wait
+
+# If there was prod infra do it here  
+  # - command: make apply-prod
+  #   label: "Applying all the :terraform: to PROD :bomb:"
+  #   branches: main

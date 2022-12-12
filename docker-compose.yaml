@@ -1,0 +1,16 @@
+version: '3'
+services:
+  terraform-utils:
+    image:      alpine/terragrunt:latest
+    env_file: .env
+    volumes:
+      - .:/apps
+      - $HOME/.aws:/root/.aws
+    working_dir: /apps
+
+  envvars:
+    image: flemay/envvars:latest
+    env_file: .env
+    working_dir: /work
+    volumes:
+      - .:/work

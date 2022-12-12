@@ -1,0 +1,14 @@
+# main terraform excludes
+.terraform
+**/.terraform/
+*.tfstate*
+.terraform.lock.hcl
+
+# don't need to commite the env file
+.env
+
+# editor generated...
+.vscode
+
+# MacOS
+.DS_Store

@@ -1,0 +1,7 @@
+envvars:
+  - name: TF_INPUT
+    desc: prompt for user input before running commands
+    optional: true
+
+  - name: AWS_PROFILE
+    optional: true
